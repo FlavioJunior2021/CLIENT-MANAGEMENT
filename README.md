@@ -37,7 +37,7 @@ O servidor conta com as seguintes funcionalidades:
 - CRUD completo para `Client` e `Order`.
 - Filtrar clientes por ID e nome.
 - Filtrar `Order` por ID e status.
-- 
+  
 ## Estrutura do Banco de Dados
 O banco de dados consiste em duas entidades: Client e Order. A entidade Client tem um relacionamento um-para-muitos com a entidade Order.
 
