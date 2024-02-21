@@ -20,7 +20,7 @@ model Client {
 model Order {
   id          String   @id @default(uuid())
   description String
-  status      STATUS @default(PENDING)
+	status      STATUS   @default(PENDING)
   createdAt   DateTime @default(now())
   clientId    String
   client      Client   @relation(fields: [clientId], references: [id])

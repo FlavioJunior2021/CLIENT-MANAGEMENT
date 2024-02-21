@@ -55,7 +55,7 @@ export const ClientController = {
 			const clients = await getAllClient();
 			reply.code(201).send(clients);
 		} catch (err) {
-			reply.code(404).send(err);
+			reply.code(500).send(err);
 		}
 	},
 
