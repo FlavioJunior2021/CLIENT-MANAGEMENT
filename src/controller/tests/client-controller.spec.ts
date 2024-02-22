@@ -1,5 +1,6 @@
 import {
 	createClient,
+	deleteClient,
 	getAllClient,
 	getClientById,
 	getClientByName,
@@ -245,7 +246,7 @@ describe("Client Controller", () => {
 	});
 });
 
-////Should be update clients error
+//Should be update clients error
 describe("Client Controller", () => {
 	it("Should handle errors and return 400 status code", async () => {
 		const mockError = new Error("Internal Server Error");
@@ -269,5 +270,54 @@ describe("Client Controller", () => {
 
 		expect(reply.send).toHaveBeenCalledWith(mockError);
 		expect(reply.code).toHaveBeenCalledWith(400);
+	});
+});
+
+//Delete Client
+describe("Client Controller", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
+	it("Client deleted successfully and returning Deleted", async () => {
+		const request = {
+			params: {
+				id: "123-456-789-101112",
+			},
+		} as FastifyRequest;
+
+		const reply = {
+			code: jest.fn().mockReturnThis(),
+			send: jest.fn(),
+		} as unknown as FastifyReply;
+
+		await ClientController.delete(request, reply);
+
+		expect(deleteClient).toHaveBeenCalledTimes(1);
+		expect(deleteClient).toHaveBeenCalledWith("123-456-789-101112");
+		expect(reply.send).toHaveBeenCalledWith("Deleted;");
+		expect(reply.send).toHaveBeenCalledTimes(1);
+	});
+});
+
+//Should be delete clients error
+describe("Client Controller", () => {
+	it("Should handle errors and return 404 status code", async () => {
+		const mockError = new Error("Internal Server Error");
+		const request = {
+			params: {
+				id: "123-456-789-101112",
+			},
+		} as FastifyRequest;
+
+		const reply = {
+			code: jest.fn().mockReturnThis(),
+			send: jest.fn(),
+		} as unknown as FastifyReply;
+
+		(deleteClient as jest.Mock).mockRejectedValue(mockError);
+		await ClientController.delete(request, reply);
+
+		expect(reply.send).toHaveBeenCalledWith(mockError);
+		expect(reply.code).toHaveBeenCalledWith(404);
 	});
 });
