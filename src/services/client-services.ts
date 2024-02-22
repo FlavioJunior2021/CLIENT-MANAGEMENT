@@ -4,13 +4,13 @@ import { Client } from "../types/Client";
 export async function createClient(clientData: Client): Promise<Client> {
 	const { name, phone } = clientData;
 
-	if (!name) throw new Error("Indicate the name to the request to continue");
+	if (!name) throw new Error("Indique o nome do cliente");
 
-	if (!phone) throw new Error("Indicate the phone to the request to continue");
+	if (!phone) throw new Error("Indique o telefone do cliente");
 	validateContactNumber(phone);
 
 	const client = await findClientByName(name);
-	if (client) throw new Error("client already registered");
+	if (client) throw new Error("Cliente já cadastrado");
 
 	return await prisma.client.create({ data: clientData });
 }
@@ -18,7 +18,7 @@ export async function createClient(clientData: Client): Promise<Client> {
 export async function getClientById(id: string): Promise<Client> {
 	const client = await prisma.client.findUnique({ where: { id } });
 
-	if (!client) throw new Error("Client not found in database");
+	if (!client) throw new Error("Cliente não existe no banco de dados");
 
 	return client;
 }
@@ -29,7 +29,7 @@ export async function getAllClient(): Promise<Client[]> {
 
 export async function getClientByName(name: string): Promise<Client> {
 	const client = await findClientByName(name);
-	if (!client) throw new Error("Client not found in database");
+	if (!client) throw new Error("Cliente não existe no banco de dados");
 
 	return client;
 }
@@ -50,7 +50,7 @@ export async function deleteClient(id: string): Promise<Client> {
 function validateContactNumber(contact: string) {
 	const contactRegex = /^\(\d{2}\) \d{4,5}-\d{4}$/;
 	if (!contactRegex.test(contact)) {
-		throw new Error("Invalid contact number");
+		throw new Error("Número invalido");
 	}
 }
 
