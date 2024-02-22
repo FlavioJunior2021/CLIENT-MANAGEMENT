@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708611146469" clover="3.2.0">
-  <project timestamp="1708611146469" name="All files">
-    <metrics statements="163" coveredstatements="93" conditionals="12" coveredconditionals="12" methods="14" coveredmethods="4" elements="189" coveredelements="109" complexity="0" loc="163" ncloc="163" packages="4" files="4" classes="4"/>
+<coverage generated="1708612048569" clover="3.2.0">
+  <project timestamp="1708612048569" name="All files">
+    <metrics statements="163" coveredstatements="102" conditionals="15" coveredconditionals="15" methods="14" coveredmethods="5" elements="192" coveredelements="122" complexity="0" loc="163" ncloc="163" packages="4" files="4" classes="4"/>
     <package name="config">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="prisma.ts" path="C:\Users\flavi\Documents\MicrotechPro\ProjetosWeb\client-management\server\src\config\prisma.ts">
@@ -14,9 +14,9 @@
       </file>
     </package>
     <package name="controller">
-      <metrics statements="82" coveredstatements="65" conditionals="12" coveredconditionals="12" methods="6" coveredmethods="4"/>
+      <metrics statements="82" coveredstatements="74" conditionals="15" coveredconditionals="15" methods="6" coveredmethods="5"/>
       <file name="client-controller.ts" path="C:\Users\flavi\Documents\MicrotechPro\ProjetosWeb\client-management\server\src\controller\client-controller.ts">
-        <metrics statements="82" coveredstatements="65" conditionals="12" coveredconditionals="12" methods="6" coveredmethods="4"/>
+        <metrics statements="82" coveredstatements="74" conditionals="15" coveredconditionals="15" methods="6" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -78,16 +78,16 @@
         <line num="59" count="1" type="stmt"/>
         <line num="60" count="2" type="stmt"/>
         <line num="61" count="1" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
+        <line num="62" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="64" count="2" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="67" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
         <line num="72" count="1" type="stmt"/>
         <line num="73" count="1" type="stmt"/>
         <line num="74" count="0" type="stmt"/>

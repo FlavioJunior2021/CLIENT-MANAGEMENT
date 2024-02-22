@@ -3,6 +3,7 @@ import {
 	getAllClient,
 	getClientById,
 	getClientByName,
+	updateClient,
 } from "../../services/client-services";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { ClientController } from "../client-controller";
@@ -208,5 +209,65 @@ describe("Client Controller", () => {
 
 		expect(reply.send).toHaveBeenCalledWith(mockError);
 		expect(reply.code).toHaveBeenCalledWith(404);
+	});
+});
+
+//Update Client
+describe("Client Controller", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
+	it("Client updated successfully and returning 201", async () => {
+		const request = {
+			body: {
+				name: "Jhon Do",
+				phone: "(84) 865830-9627",
+			},
+			params: {
+				id: "123-456-789-101112",
+			},
+		} as FastifyRequest;
+
+		const reply = {
+			code: jest.fn().mockReturnThis(),
+			send: jest.fn(),
+		} as unknown as FastifyReply;
+
+		await ClientController.update(request, reply);
+
+		expect(updateClient).toHaveBeenCalledTimes(1);
+		expect(updateClient).toHaveBeenCalledWith("123-456-789-101112", {
+			name: "Jhon Do",
+			phone: "(84) 865830-9627",
+		});
+		expect(reply.code).toHaveBeenCalledWith(201);
+		expect(reply.send).toHaveBeenCalledTimes(1);
+	});
+});
+
+////Should be update clients error
+describe("Client Controller", () => {
+	it("Should handle errors and return 400 status code", async () => {
+		const mockError = new Error("Internal Server Error");
+		const request = {
+			body: {
+				name: "Jhon Do",
+				phone: "(84) 865830-9627",
+			},
+			params: {
+				id: "123-456-789-101112",
+			}
+		} as FastifyRequest;
+
+		const reply = {
+			code: jest.fn().mockReturnThis(),
+			send: jest.fn(),
+		} as unknown as FastifyReply;
+
+		(updateClient as jest.Mock).mockRejectedValue(mockError);
+		await ClientController.update(request, reply);
+
+		expect(reply.send).toHaveBeenCalledWith(mockError);
+		expect(reply.code).toHaveBeenCalledWith(400);
 	});
 });
