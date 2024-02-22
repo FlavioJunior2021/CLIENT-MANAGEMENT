@@ -2,6 +2,7 @@ import {
 	createClient,
 	getAllClient,
 	getClientById,
+	getClientByName,
 } from "../../services/client-services";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { ClientController } from "../client-controller";
@@ -60,7 +61,7 @@ describe("Client Controller", () => {
 	});
 });
 
-//Create Client 
+//Create Client
 describe("Client Controller", () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
@@ -139,7 +140,7 @@ describe("Client Controller", () => {
 	});
 });
 
-//Should be get clients by id error 
+//Should be get clients by id error
 describe("Client Controller", () => {
 	it("Should handle errors and return 404 status code", async () => {
 		const mockError = new Error("Internal Server Error");
@@ -159,5 +160,53 @@ describe("Client Controller", () => {
 
 		expect(reply.send).toHaveBeenCalledWith(mockError);
 		expect(reply.code).toHaveBeenCalledWith(404);
-	})
-})
+	});
+});
+
+//Get Clients by name
+describe("Client Controller", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
+	it("Get clients by name", async () => {
+		const request = {
+			params: {
+				name: "Jhon Do",
+			},
+		} as FastifyRequest;
+
+		const reply = {
+			code: jest.fn().mockReturnThis(),
+			send: jest.fn(),
+		} as unknown as FastifyReply;
+
+		await ClientController.getByName(request, reply);
+		expect(getClientByName).toHaveBeenCalledTimes(1);
+		expect(getClientByName).toHaveBeenCalledWith("Jhon Do");
+		expect(reply.code).toHaveBeenCalledWith(201);
+		expect(reply.send).toHaveBeenCalledTimes(1);
+	});
+});
+
+////Should be get clients by name error
+describe("Client Controller", () => {
+	it("Should handle errors and return 404 status code", async () => {
+		const mockError = new Error("Internal Server Error");
+		const request = {
+			params: {
+				name: "Jhon Do",
+			},
+		} as FastifyRequest;
+
+		const reply = {
+			code: jest.fn().mockReturnThis(),
+			send: jest.fn(),
+		} as unknown as FastifyReply;
+
+		(getClientByName as jest.Mock).mockRejectedValue(mockError);
+		await ClientController.getByName(request, reply);
+
+		expect(reply.send).toHaveBeenCalledWith(mockError);
+		expect(reply.code).toHaveBeenCalledWith(404);
+	});
+});
