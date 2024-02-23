@@ -215,7 +215,7 @@ describe("Order Controller", () => {
 });
 
 //Update Order
-describe("Client Controller", () => {
+describe("Order Controller", () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
 	});
@@ -246,7 +246,7 @@ describe("Client Controller", () => {
 });
 
 //Should be update orders error
-describe("Client Controller", () => {
+describe("Order Controller", () => {
 	it("Should handle errors and return 400 status code", async () => {
 		const mockError = new Error("Internal Server Error");
 		const request = {
@@ -272,7 +272,7 @@ describe("Client Controller", () => {
 });
 
 //Delete Order
-describe("Client Controller", () => {
+describe("Order Controller", () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
 	});
@@ -298,7 +298,7 @@ describe("Client Controller", () => {
 });
 
 //Should be deleted orders error
-describe("Client Controller", () => {
+describe("Order Controller", () => {
 	it("Should handle errors and return 400 status code", async () => {
 		const mockError = new Error("Internal Server Error");
 		const request = {
