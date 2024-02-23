@@ -22,7 +22,7 @@ export async function getOrderById(id: string): Promise<Order> {
 export async function getAllOrders(): Promise<Order[]> {
 	return await prisma.order.findMany({
 		orderBy: {
-			createdAt: "asc",
+			createdAt: "desc",
 		},
 	});
 }
