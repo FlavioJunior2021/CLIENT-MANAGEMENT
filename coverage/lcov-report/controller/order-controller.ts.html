@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controller/client-controller.ts</title>
+    <title>Code coverage report for controller/order-controller.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controller</a> client-controller.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controller</a> order-controller.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -228,32 +228,32 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FastifyReply, FastifyRequest } from "fastify";
-import { ClientSchema, updateClientSchema } from "../types/Client";
+import { OrderSchema, OrderUpdateSchema } from "../types/Order";
 import { z } from "zod";
 &nbsp;
 import {
-	createClient,
-	deleteClient,
-	getAllClient,
-	getClientById,
-	getClientByName,
-	updateClient,
-} from "../services/client-services";
+	createOrder,
+	getOrderById,
+	getAllOrders,
+	updateOrder,
+	deleteOrder,
+	getOrderByStatus,
+} from "../services/order-services";
 &nbsp;
 const paramsSchema = z.object({
 	id: z.string(),
 });
 &nbsp;
-const nameSchema = z.object({
-	name: z.string(),
+const statusSchema = z.object({
+	status: z.enum(["RESOLVED", "PENDING"]),
 })
 &nbsp;
-export const ClientController = {
+export const orderController = {
 	create: async (request: FastifyRequest, reply: FastifyReply) =&gt; {
 		try {
-			const data = ClientSchema.parse(request.body);
-			const client = await createClient(data);
-			reply.code(201).send(client);
+			const data = OrderSchema.parse(request.body);
+			const order = await createOrder(data);
+			reply.code(201).send(order);
 		} catch (err) {
 			reply.code(400).send(err);
 		}
@@ -262,18 +262,18 @@ export const ClientController = {
 	getById: async (request: FastifyRequest, reply: FastifyReply) =&gt; {
 		try {
 			const params = paramsSchema.parse(request.params);
-			const client = await getClientById(params.id);
-			reply.code(201).send(client);
+			const order = await getOrderById(params.id);
+			reply.code(201).send(order);
 		} catch (err) {
 			reply.code(404).send(err);
 		}
 	},
 &nbsp;
-	getByName: async (request: FastifyRequest, reply: FastifyReply) =&gt; {
+	getByStatus: async (request: FastifyRequest, reply: FastifyReply) =&gt; {
 		try {
-			const params = nameSchema.parse(request.params);
-			const client = await getClientByName(params.name);
-			reply.code(201).send(client);
+			const params = statusSchema.parse(request.params);
+			const orders = await getOrderByStatus(params.status);
+			reply.code(201).send(orders);
 		} catch (err) {
 			reply.code(404).send(err);
 		}
@@ -281,19 +281,19 @@ export const ClientController = {
 &nbsp;
 	getAll: async (request: FastifyRequest, reply: FastifyReply) =&gt; {
 		try {
-			const clients = await getAllClient();
-			reply.code(201).send(clients);
+			const orders = await getAllOrders();
+			reply.code(201).send(orders);
 		} catch (err) {
-			reply.code(500).send(err);
+			reply.code(404).send(err);
 		}
 	},
 &nbsp;
 	update: async (request: FastifyRequest, reply: FastifyReply) =&gt; {
 		try {
 			const params = paramsSchema.parse(request.params);
-			const data = updateClientSchema.parse(request.body);
-			const client = await updateClient(params.id, data);
-			reply.code(201).send(client);
+			const data = OrderUpdateSchema.parse(request.body);
+			const order = await updateOrder(params.id, data);
+			reply.code(201).send(order);
 		} catch (err) {
 			reply.code(400).send(err);
 		}
@@ -302,7 +302,7 @@ export const ClientController = {
 	delete: async (request: FastifyRequest, reply: FastifyReply) =&gt; {
 		try {
 			const params = paramsSchema.parse(request.params);
-			await deleteClient(params.id);
+			await deleteOrder(params.id);
 			reply.send("Deleted;");
 		} catch (err) {
 			reply.code(404).send(err);

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/client-services.ts</title>
+    <title>Code coverage report for services/order-services.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> client-services.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> order-services.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.87% </span>
+                <span class="strong">14.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/63</span>
+                <span class='fraction'>8/54</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.87% </span>
+                <span class="strong">14.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/63</span>
+                <span class='fraction'>8/54</span>
             </div>
         
             
@@ -117,22 +117,9 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -154,18 +141,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -174,7 +149,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -186,71 +160,70 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { prisma } from "../config/prisma";
-import { Client } from "../types/Client";
+import { Order } from "../types/Order";
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function createClient(clientData: Client): Promise&lt;Client&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >	const { name, phone } = clientData;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function createOrder(orderData: Order): Promise&lt;Order&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >	const { description, clientId } = orderData;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if (!name) throw new Error("Indique o nome do cliente");</span>
+<span class="cstat-no" title="statement not covered" >	if (!description) throw new Error("De uma descrição ao pedido");</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if (!phone) throw new Error("Indique o telefone do cliente");</span>
-<span class="cstat-no" title="statement not covered" >	validateContactNumber(phone);</span>
+<span class="cstat-no" title="statement not covered" >	if (!clientId) throw new Error("Indique o ID do cliente");</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	const client = await findClientByName(name);</span>
-<span class="cstat-no" title="statement not covered" >	if (client) throw new Error("Cliente já cadastrado");</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	return await prisma.client.create({ data: clientData });</span>
+<span class="cstat-no" title="statement not covered" >	return await prisma.order.create({ data: orderData });</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function getClientById(id: string): Promise&lt;Client&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >	const client = await prisma.client.findUnique({ where: { id } });</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function getOrderById(id: string): Promise&lt;Order&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >	const order = await prisma.order.findUnique({ where: { id } });</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if (!client) throw new Error("Cliente não existe no banco de dados");</span>
+<span class="cstat-no" title="statement not covered" >	if (!order) throw new Error("Pedido não existe no banco de dados");</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	return client;</span>
+<span class="cstat-no" title="statement not covered" >	return order;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function getAllClient(): Promise&lt;Client[]&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >	return await prisma.client.findMany();</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function getAllOrders(): Promise&lt;Order[]&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >	return await prisma.order.findMany({</span>
+<span class="cstat-no" title="statement not covered" >		orderBy: {</span>
+<span class="cstat-no" title="statement not covered" >			createdAt: "asc",</span>
+<span class="cstat-no" title="statement not covered" >		},</span>
+<span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function getClientByName(name: string): Promise&lt;Client&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >	const client = await findClientByName(name);</span>
-<span class="cstat-no" title="statement not covered" >	if (!client) throw new Error("Cliente não existe no banco de dados");</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	return client;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function getOrderByStatus(</span></span>
+<span class="cstat-no" title="statement not covered" >	data: "RESOLVED" | "PENDING"</span>
+<span class="cstat-no" title="statement not covered" >): Promise&lt;Order[]&gt; {</span>
+<span class="cstat-no" title="statement not covered" >	return await prisma.order.findMany({</span>
+<span class="cstat-no" title="statement not covered" >		where: {</span>
+<span class="cstat-no" title="statement not covered" >			status: data,</span>
+<span class="cstat-no" title="statement not covered" >		},</span>
+<span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function updateClient(id: string, clientData: Partial&lt;Client&gt;): Promise&lt;Client&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >	return await prisma.client.update({</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function updateOrder(</span></span>
+<span class="cstat-no" title="statement not covered" >	id: string,</span>
+<span class="cstat-no" title="statement not covered" >	orderData: Partial&lt;Order&gt;</span>
+<span class="cstat-no" title="statement not covered" >): Promise&lt;Order&gt; {</span>
+<span class="cstat-no" title="statement not covered" >	return await prisma.order.update({</span>
 <span class="cstat-no" title="statement not covered" >		where: { id },</span>
 <span class="cstat-no" title="statement not covered" >		data: {</span>
-<span class="cstat-no" title="statement not covered" >			...clientData,</span>
+<span class="cstat-no" title="statement not covered" >			...orderData,</span>
 <span class="cstat-no" title="statement not covered" >		},</span>
 <span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function deleteClient(id: string): Promise&lt;Client&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >	return await prisma.client.delete({ where: { id } });</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function validateContactNumber(contact: string) {</span></span>
-<span class="cstat-no" title="statement not covered" >	const contactRegex = /^\(\d{2}\) \d{4,5}-\d{4}$/;</span>
-<span class="cstat-no" title="statement not covered" >	if (!contactRegex.test(contact)) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new Error("Número invalido");</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async function findClientByName(name: string) {</span></span>
-<span class="cstat-no" title="statement not covered" >	return await prisma.client.findFirst({</span>
-<span class="cstat-no" title="statement not covered" >		where: {</span>
-<span class="cstat-no" title="statement not covered" >			name: {contains: name}</span>
-<span class="cstat-no" title="statement not covered" >		},</span>
-<span class="cstat-no" title="statement not covered" >	});</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export async function deleteOrder(id: string): Promise&lt;Order&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >	return await prisma.order.delete({ where: { id } });</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;</pre></td></tr></table></pre>
 
