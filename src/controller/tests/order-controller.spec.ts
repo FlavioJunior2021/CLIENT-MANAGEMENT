@@ -1,6 +1,13 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { orderController } from "../order-controller";
-import { createOrder, getAllOrders, getOrderById, getOrderByStatus, deleteOrder, updateOrder } from "../../services/order-services";
+import {
+	createOrder,
+	getAllOrders,
+	getOrderById,
+	getOrderByStatus,
+	deleteOrder,
+	updateOrder,
+} from "../../services/order-services";
 
 jest.mock("../../services/order-services.ts");
 
@@ -167,7 +174,7 @@ describe("Order Controller", () => {
 			body: {
 				clientId: "123-456-789",
 				status: "PENDING",
-				description: "Order Description"
+				description: "Order Description",
 			},
 		} as FastifyRequest;
 
@@ -182,7 +189,7 @@ describe("Order Controller", () => {
 		expect(createOrder).toHaveBeenCalledWith({
 			clientId: "123-456-789",
 			status: "PENDING",
-			description: "Order Description"
+			description: "Order Description",
 		});
 		expect(reply.code).toHaveBeenCalledWith(201);
 		expect(reply.send).toHaveBeenCalledTimes(1);
@@ -197,7 +204,7 @@ describe("Order Controller", () => {
 			body: {
 				clientId: "123-456-789",
 				status: "PENDING",
-				description: "Order Description"
+				description: "Order Description",
 			},
 		} as FastifyRequest;
 
@@ -222,7 +229,7 @@ describe("Order Controller", () => {
 	it("Order updated successfully and returning 201", async () => {
 		const request = {
 			body: {
-				status: "RESOLVED"
+				status: "RESOLVED",
 			},
 			params: {
 				id: "123-456-789",
@@ -238,7 +245,7 @@ describe("Order Controller", () => {
 
 		expect(updateOrder).toHaveBeenCalledTimes(1);
 		expect(updateOrder).toHaveBeenCalledWith("123-456-789", {
-			status: "RESOLVED"
+			status: "RESOLVED",
 		});
 		expect(reply.code).toHaveBeenCalledWith(201);
 		expect(reply.send).toHaveBeenCalledTimes(1);
@@ -251,7 +258,7 @@ describe("Order Controller", () => {
 		const mockError = new Error("Internal Server Error");
 		const request = {
 			body: {
-				status: "RESOLVED"
+				status: "RESOLVED",
 			},
 			params: {
 				id: "123-456-789",
