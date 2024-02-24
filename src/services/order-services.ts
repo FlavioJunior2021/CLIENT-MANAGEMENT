@@ -11,10 +11,13 @@ export async function createOrder(orderData: Order): Promise<Order> {
 
 	const client = await getClientById(clientId);
 
-	orderData.clientName = client.name;
-	orderData.clientPhone = client.phone;
+	const newOrderData = {
+		...orderData,
+		clientName: client.name,
+		clientPhone: client.phone,
+	};
 
-	return await prisma.order.create({ data: orderData });
+	return await prisma.order.create({ data: newOrderData });
 }
 
 export async function getOrderById(id: string): Promise<Order> {
