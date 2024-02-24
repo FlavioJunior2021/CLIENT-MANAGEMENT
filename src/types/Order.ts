@@ -4,6 +4,8 @@ export const OrderSchema = z.object({
   description: z.string(),
   status: z.enum(["RESOLVED", "PENDING"]),
   clientId: z.string(),
+	clientName: z.string().optional(),
+	clientPhone: z.string().optional(),
 });
 
 export const OrderUpdateSchema = z.object({

@@ -23,6 +23,8 @@ model Order {
 	status      STATUS   @default(PENDING)
   createdAt   DateTime @default(now())
   clientId    String
+	clientName String
+	clientPhone String
   client      Client   @relation(fields: [clientId], references: [id])
 }
 

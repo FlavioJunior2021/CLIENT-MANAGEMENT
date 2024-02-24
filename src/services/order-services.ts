@@ -1,5 +1,6 @@
 import { prisma } from "../config/prisma";
 import { Order } from "../types/Order";
+import { getClientById } from "./client-services";
 
 export async function createOrder(orderData: Order): Promise<Order> {
 	const { description, clientId } = orderData;
@@ -7,6 +8,11 @@ export async function createOrder(orderData: Order): Promise<Order> {
 	if (!description) throw new Error("De uma descrição ao pedido");
 
 	if (!clientId) throw new Error("Indique o ID do cliente");
+
+	const client = await getClientById(clientId);
+
+	orderData.clientName = client.name;
+	orderData.clientPhone = client.phone;
 
 	return await prisma.order.create({ data: orderData });
 }
