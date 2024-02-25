@@ -1,4 +1,5 @@
 import { prisma } from "../config/prisma";
+import { differenceInDays } from "date-fns";
 import { Order } from "../types/Order";
 import { getClientById } from "./client-services";
 
@@ -60,4 +61,24 @@ export async function updateOrder(
 
 export async function deleteOrder(id: string): Promise<Order> {
 	return await prisma.order.delete({ where: { id } });
+}
+
+export async function deleteResolvedOrdersOlderThanFiveDays(): Promise<void> {
+  const orders = await prisma.order.findMany({
+    where: {
+      status: "RESOLVED",
+    },
+  });
+
+  for (const order of orders) {
+    const daysSinceOrder = differenceInDays(new Date(), order.createdAt);
+
+    if (daysSinceOrder > 5) {
+      await prisma.order.delete({
+        where: {
+          id: order.id,
+        },
+      });
+    }
+  }
 }

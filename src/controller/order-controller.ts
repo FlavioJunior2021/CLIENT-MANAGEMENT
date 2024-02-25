@@ -9,6 +9,7 @@ import {
 	updateOrder,
 	deleteOrder,
 	getOrderByStatus,
+	deleteResolvedOrdersOlderThanFiveDays,
 } from "../services/order-services";
 
 const paramsSchema = z.object({
@@ -52,6 +53,7 @@ export const orderController = {
 
 	getAll: async (request: FastifyRequest, reply: FastifyReply) => {
 		try {
+			await deleteResolvedOrdersOlderThanFiveDays()
 			const orders = await getAllOrders();
 			reply.code(201).send(orders);
 		} catch (err) {
