@@ -81,4 +81,13 @@ export const orderController = {
 			reply.code(404).send(err);
 		}
 	},
+
+	deleteResolvedOrders: async (request: FastifyRequest, reply: FastifyReply) => {
+		try {
+			await deleteResolvedOrdersOlderThanFiveDays()
+			reply.send("Pedidos resolvidos com mais de cinco dias foram excluídos.");
+		} catch (err) {
+			reply.code(500).send(err);
+		}
+	},
 };

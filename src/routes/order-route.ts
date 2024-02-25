@@ -19,13 +19,19 @@ export async function orderRoutes(fastify: FastifyInstance) {
 	fastify.route({
 		method: "get",
 		url: "/orders/status/:status",
-		handler: orderController.getByStatus
-	})
+		handler: orderController.getByStatus,
+	});
 
 	fastify.route({
 		method: "get",
 		url: "/orders",
 		handler: orderController.getAll,
+	});
+
+	fastify.route({
+		method: "delete",
+		url: "/orders/resolved",
+		handler: orderController.deleteResolvedOrders,
 	});
 
 	fastify.route({
